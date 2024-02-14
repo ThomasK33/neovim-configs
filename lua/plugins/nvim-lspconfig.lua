@@ -17,7 +17,7 @@ return {
           gopls = {
             gofumpt = true,
             hints = {
-              assignVariableTypes = true,
+              assignVariableTypes = false,
               compositeLiteralFields = true,
               constantValues = true,
               parameterNames = true,

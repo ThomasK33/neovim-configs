@@ -7,26 +7,25 @@ vim.keymap.set({ "n", "v" }, "Ö", ":")
 
 local Util = require("lazyvim.util")
 
--- lazygit
-vim.keymap.set("n", "<leader>gl", function()
-  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
-end, { desc = "Lazygit (root dir)" })
-vim.keymap.set("n", "<leader>gL", function()
-  Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
-end, { desc = "Lazygit (cwd)" })
-
--- GitUI
-
-vim.keymap.set("n", "<leader>gg", function()
-  Util.terminal({ "gitui" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
-end, { desc = "GitUI (root dir)" })
-vim.keymap.set("n", "<leader>gG", function()
-  Util.terminal({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
-end, { desc = "GitUI (cwd)" })
-
 -- Terminal
 
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
 end
 vim.keymap.set("n", "ä", lazyterm, { desc = "Terminal (root dir)" })
+
+-- Line moving
+vim.keymap.set("n", "º", "<cmd>m .+1<cr>==", { desc = "Move down" })
+vim.keymap.set("n", "∆", "<cmd>m .-2<cr>==", { desc = "Move up" })
+vim.keymap.set("i", "º", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+vim.keymap.set("i", "∆", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+vim.keymap.set("v", "∆", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+vim.keymap.set("v", "º", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+
+-- Tmux
+vim.keymap.set("n", "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>")
+vim.keymap.set("n", "<C-\\>", "<cmd>NvimTmuxNavigateLastActive<cr>")
+vim.keymap.set("n", "<C-Space>", "<cmd>NvimTmuxNavigateNext<cr>")
