@@ -1,8 +1,11 @@
+local Util = require("lazyvim.util")
+
 return {
   {
     "telescope.nvim",
     opts = function()
       local actions = require("telescope.actions")
+      local lga_actions = require("telescope-live-grep-args.actions")
 
       local select_one_or_multi = function(prompt_bufnr)
         local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
@@ -25,6 +28,7 @@ return {
             i = {
               ["«"] = actions.send_selected_to_qflist + actions.open_qflist,
               ["<CR>"] = select_one_or_multi,
+              ["<C-k>"] = lga_actions.quote_prompt(),
             },
             n = {
               ["«"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -36,15 +40,17 @@ return {
     end,
   },
   {
-    "telescope.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        -- This will not install any breaking changes.
-        -- For major updates, this must be adjusted manually.
-        version = "^1.0.0",
-      },
-    },
+
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    -- This will not install any breaking changes.
+    -- For major updates, this must be adjusted manually.
+    version = "^1.0.0",
+    config = function()
+      Util.on_load("telescope.nvim", function()
+        require("telescope").load_extension("live_grep_args")
+      end)
+    end,
+
     keys = {
       {
         "<leader>fg",
@@ -54,8 +60,5 @@ return {
         desc = "Grep Args",
       },
     },
-    config = function()
-      require("telescope").load_extension("live_grep_args")
-    end,
   },
 }
