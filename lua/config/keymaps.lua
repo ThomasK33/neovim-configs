@@ -5,15 +5,6 @@ vim.keymap.set({ "n", "v" }, "ö", ";")
 vim.keymap.set({ "n", "v" }, "Ö", ":")
 -- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
-local Util = require("lazyvim.util")
-
--- Terminal
-
-local lazyterm = function()
-  Util.terminal(nil, { cwd = Util.root() })
-end
-vim.keymap.set("n", "ä", lazyterm, { desc = "Terminal (root dir)" })
-
 -- Line moving
 vim.keymap.set("n", "º", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set("n", "∆", "<cmd>m .-2<cr>==", { desc = "Move up" })

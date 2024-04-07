@@ -1,5 +1,3 @@
-local Util = require("lazyvim.util")
-
 return {
   {
     "telescope.nvim",
@@ -40,24 +38,25 @@ return {
     end,
   },
   {
-
-    "nvim-telescope/telescope-live-grep-args.nvim",
-    -- This will not install any breaking changes.
-    -- For major updates, this must be adjusted manually.
-    version = "^1.0.0",
-    config = function()
-      Util.on_load("telescope.nvim", function()
-        require("telescope").load_extension("live_grep_args")
-      end)
+    "telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+      },
+    },
+    opts = function()
+      require("telescope").load_extension("live_grep_args")
     end,
-
     keys = {
       {
         "<leader>fg",
         function()
           require("telescope").extensions.live_grep_args.live_grep_args()
         end,
-        desc = "Grep Args",
+        desc = "Live Grep Args",
       },
     },
   },
