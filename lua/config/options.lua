@@ -3,3 +3,5 @@
 -- Add any additional options here
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.g.deprecation_warnings = true

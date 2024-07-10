@@ -2,10 +2,12 @@ return {
   "folke/todo-comments.nvim",
   opts = {
     highlight = {
-      pattern = [[(KEYWORDS)\s*(\([^\)]*\))?:]],
+      -- vimgrep regex, supporting the pattern TODO(name):
+      pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]],
     },
     search = {
-      pattern = [[(KEYWORDS)\s*(\([^\)]*\))?:]],
+      -- ripgrep regex, supporting the pattern TODO(name):
+      pattern = [[\b(KEYWORDS)(\(\w*\))*:]],
     },
   },
 }

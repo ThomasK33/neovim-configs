@@ -25,6 +25,7 @@ return {
           },
         },
       },
+      tsp_server = {},
     },
   },
 }

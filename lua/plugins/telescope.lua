@@ -27,6 +27,9 @@ return {
               ["«"] = actions.send_selected_to_qflist + actions.open_qflist,
               ["<CR>"] = select_one_or_multi,
               ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-u>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              ["<C-h>"] = lga_actions.quote_prompt({ postfix = " --hidden " }),
+              ["<C-j>"] = lga_actions.quote_prompt({ postfix = " --no-ignore " }),
             },
             n = {
               ["«"] = actions.send_selected_to_qflist + actions.open_qflist,
