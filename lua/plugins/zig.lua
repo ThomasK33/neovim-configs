@@ -19,9 +19,9 @@ return {
       local dap = require("dap")
       dap.configurations["zig"] = {
         {
+          name = "Run Zig program",
           type = "codelldb",
           request = "launch",
-          name = "Run Zig program",
           program = function()
             vim.cmd("make")
             local command = "fd . -t x zig-out/bin/"
@@ -53,9 +53,9 @@ return {
           stopOnEntry = false,
         },
         {
+          name = "Run Zig program (new args)",
           type = "codelldb",
           request = "launch",
-          name = "Run Zig program (new args)",
           program = function()
             vim.cmd("make")
             local command = "fd . -t x zig-out/bin/"
@@ -109,7 +109,7 @@ return {
     optional = true,
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "zls", "codelldb" })
+        vim.list_extend(opts.ensure_installed, { "codelldb" })
       end
     end,
   },
@@ -117,24 +117,18 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        zls = {},
-        -- settings = {
-        --   semantic_tokens = "full",
-        --   warn_style = false,
-        --   highlight_global_var_declarations = false,
-        --   -- NOTE: never seen an inlay hint
-        --   -- and I don't know what record_session does
-        --   -- nor dangerous_comptime_experiments_do_not_enable...
-        --   -- enable_inlay_hints = true,
-        --   -- inlay_hints_show_builtin = true,
-        --   -- inlay_hints_exclude_single_argument = true,
-        --   -- inlay_hints_hide_redundant_param_names = true,
-        --   -- inlay_hints_hide_redundant_param_names_last_token = true,
-        --   -- dangerous_comptime_experiments_do_not_enable = true,
-        --   -- skip_std_references = true,
-        --   -- record_session = true,
-        -- },
-        -- },
+        zls = {
+          mason = false,
+        },
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        zig = { "zigfmt" },
       },
     },
   },
