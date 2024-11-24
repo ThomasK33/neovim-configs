@@ -1,9 +1,8 @@
 return {
   {
     "rebelot/kanagawa.nvim",
-    -- lazy = true,
     name = "kanagawa",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {
       theme = "wave",
