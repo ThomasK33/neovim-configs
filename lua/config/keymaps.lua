@@ -4,6 +4,7 @@
 vim.keymap.set({ "n", "v" }, "ö", ";")
 vim.keymap.set({ "n", "v" }, "Ö", ":")
 -- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set({ "n", "v" }, "§", "^")
 
 -- Line moving
 vim.keymap.set("n", "º", "<cmd>m .+1<cr>==", { desc = "Move down" })
