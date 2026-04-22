@@ -1,0 +1,1 @@
+/Users/thomask33/projects/claudecode.nvim/dev-config.lua

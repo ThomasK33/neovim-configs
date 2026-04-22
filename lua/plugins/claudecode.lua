@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 return {
   {
     dir = "/Users/thomask33/GitHub/claudecode.nvim",
